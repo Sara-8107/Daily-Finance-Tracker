@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>View Report - Daily Finance Tracker</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #F0F7FF;
+      padding: 30px;
+      color: #1A2B3C;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    header {
+      text-align: center;
+      border: 3px solid #2e2e15;
+      border-radius: 20px;
+      padding: 15px;
+      margin-bottom: 30px;
+      background-color: white;
+    }
+
+    .nav-back {
+      display: inline-block;
+      margin-bottom: 20px;
+      padding: 10px 20px;
+      background-color: #3569a0;
+      color: white;
+      border-radius: 10px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+
+    .nav-back:hover {
+      background-color: #264d77;
+      transform: translateX(-5px);
+    }
+
+    /* --- Table Styling for perfect alignment --- */
+    .report-container {
+      background: white;
+      padding: 20px;
+      border-radius: 15px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 10px;
+    }
+
+    th {
+      text-align: left;
+      background-color: #f8f9fa;
+      padding: 15px;
+      border-bottom: 2px solid #3569a0;
+      color: #3569a0;
+    }
+
+    td {
+      padding: 15px;
+      border-bottom: 1px solid #eee;
+    }
+
+    .type-income {
+      color: green;
+      font-weight: bold;
+    }
+
+    .type-expense {
+      color: red;
+      font-weight: bold;
+    }
+
+    .action-btns button {
+      padding: 6px 12px;
+      margin-right: 5px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: 0.2s;
+    }
+
+    .edit-btn {
+      background-color: #ffc107;
+      color: #000;
+    }
+
+    .delete-btn {
+      background-color: #dc3545;
+      color: #fff;
+    }
+
+    .edit-btn:hover {
+      background-color: #e0a800;
+    }
+
+    .delete-btn:hover {
+      background-color: #c82333;
+    }
+
+    .footer-text {
+      text-align: center;
+      margin-top: 40px;
+      color: var(--gray-text);
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1>Daily Finance Tracker - Reports</h1>
+    <p>Your financial summary</p>
+  </header>
+
+  <a href="Expense tracker.html" class="nav-back">⬅ Back to Dashboard</a>
+
+  <div class="report-container">
+    <h2 class="title">Transaction History</h2>
+    <table id="report-table">
+      <thead>
+        <tr>
+          <th>Date</th>
+          <th>Category</th>
+          <th>Description</th>
+          <th>Type</th>
+          <th>Amount</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody id="transaction-list">
+      </tbody>
+    </table>
+  </div>
+  <div class="footer-text">
+    <p>© 2025 Financial Systems Inc.</p>
+  </div>
+  </div>
+  <script>
+    // CRITICAL: Point to Port 5000
+    const API_BASE = "http://127.0.0.1:5000/api";
+
+    async function loadTransactions() {
+      try {
+        const res = await fetch(`${API_BASE}/transactions`);
+        const transactions = await res.json();
+
+        const container = document.getElementById('transaction-list');
+        container.innerHTML = '';
+
+        if (transactions.length === 0) {
+          container.innerHTML = '<tr><td colspan="6" style="text-align:center;">No transactions found.</td></tr>';
+          return;
+        }
+
+        transactions.forEach(t => {
+          const row = document.createElement('tr');
+
+          // Apply color based on type
+          const typeClass = t.type.toLowerCase() === 'income' ? 'type-income' : 'type-expense';
+
+          row.innerHTML = `
+            <td>${t.transaction_date}</td>
+            <td>${t.category_name}</td>
+            <td>${t.description || '-'}</td>
+            <td class="${typeClass}">${t.type}</td>
+            <td>$${t.amount.toFixed(2)}</td>
+            <td class="action-btns">
+              <button class="edit-btn" onclick="editTransaction(${t.transaction_id})">Edit</button>
+              <button class="delete-btn" onclick="deleteTransaction(${t.transaction_id})">Delete</button>
+            </td>
+          `;
+          container.appendChild(row);
+        });
+
+      } catch (error) {
+        console.error('Error:', error);
+        document.getElementById('transaction-list').innerHTML = '<tr><td colspan="6">Error connecting to server.</td></tr>';
+      }
+    }
+
+    // Reuse your previous edit/delete functions but with API_BASE
+    async function deleteTransaction(id) {
+      if (!confirm("Delete this transaction?")) return;
+      await fetch(`${API_BASE}/transaction/${id}`, { method: 'DELETE' });
+      loadTransactions();
+    }
+
+    async function editTransaction(id) {
+      // ... existing prompt logic ...
+      // (Ensure you use `${API_BASE}/transaction/${id}` for the PUT request)
+    }
+
+    window.onload = loadTransactions;
+  </script>
+</body>
+
+</html>

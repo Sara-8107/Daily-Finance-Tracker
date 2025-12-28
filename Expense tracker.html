@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Finance Calculator</title>
+  <link rel="stylesheet" href="expense tracker.css" />
+
+</head>
+
+<body>
+
+  <div>
+    <header class="header-1">
+      <h1>Daily Finance tracker</h1>
+      <p class="punch">Track your money smartly</p>
+    </header>
+  </div>
+
+  <nav class="navbar">
+    <ul id="nav-list">
+      <li><a href="#" class="nav-link active" data-page="home">DashBoard</a></li>
+      <li><a href="about.html" class="nav-link" data-page="about">About & Contact</a></li>
+    </ul>
+  </nav>
+
+  <main id="content-area">
+
+    <div class="finance-summary">
+      <div class="card total-money">
+        <span class="label">Total Money</span>
+        <h2 class="amount" id="totalMoney">0.0</h2>
+      </div>
+
+      <div class="card used-money">
+        <span class="label">Money Used</span>
+        <h2 class="amount" id="usedMoney">0.0</h2>
+      </div>
+
+      <div class="card remaining-money">
+        <span class="label">Remaining</span>
+        <h2 class="amount" id="remainingMoney">0.0</h2>
+      </div>
+    </div>
+
+    <div class="dashboard-grid">
+      <a href="add-transaction.html" class="dash-btn">
+        <div class="btn-icon">➕</div>
+        <div class="btn-text">Add Transaction</div>
+      </a>
+
+      <a href="view_report.html" class="dash-btn">
+        <div class="btn-icon">📄</div>
+        <div href="reports.html" class="btn-text">View Report</div>
+      </a>
+
+      <a href="charts.html" class="dash-btn">
+        <div class="btn-icon">📈</div>
+        <div href="graphs.html" class="btn-text">Graphical Viewing</div>
+      </a>
+    </div>
+  </main>
+
+  <div class="footer-text">
+    <p>© 2025 Financial Systems Inc.</p>
+  </div>
+  </div>
+  <script src="expense tracker.js"></script>
+</body>
+
+</html>

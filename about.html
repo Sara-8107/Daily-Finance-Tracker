@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>About & Contact - Daily Finance Tracker</title>
+  <style>
+    :root {
+      --primary-blue: #3569a0;
+      --hover-blue: #264d77;
+      --bg-color: #F0F7FF;
+      --text-dark: #1A2B3C;
+      --white: #ffffff;
+      --gray-text: #555;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: var(--bg-color);
+      margin: 0;
+      padding: 20px;
+      color: var(--text-dark);
+      line-height: 1.6;
+    }
+
+    /* Consistent Header Style */
+    .header-1 {
+      max-width: 900px;
+      margin: 0 auto 40px auto;
+      text-align: center;
+      border: 3px solid #2e2e15;
+      border-radius: 20px;
+      padding: 20px;
+      background-color: var(--white);
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .nav-back {
+      display: inline-block;
+      margin-bottom: 20px;
+      text-decoration: none;
+      color: var(--primary-blue);
+      font-weight: bold;
+    }
+
+    /* Content Sections */
+    .about-section {
+      background: var(--white);
+      padding: 40px;
+      border-radius: 15px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+      margin-bottom: 30px;
+    }
+
+    h2 {
+      color: var(--primary-blue);
+      border-bottom: 2px solid var(--bg-color);
+      padding-bottom: 10px;
+      margin-top: 0;
+    }
+
+    .tech-stack {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: 15px;
+    }
+
+    .badge {
+      background: var(--bg-color);
+      color: var(--primary-blue);
+      padding: 5px 12px;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      font-weight: bold;
+      border: 1px solid var(--primary-blue);
+    }
+
+    /* Contact Form Style */
+    .contact-form {
+      background: var(--white);
+      padding: 40px;
+      border-radius: 15px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 600;
+    }
+
+    input,
+    textarea {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      font-size: 16px;
+      box-sizing: border-box;
+    }
+
+    textarea {
+      height: 120px;
+      resize: vertical;
+    }
+
+    .submit-button {
+      width: 100%;
+      padding: 15px;
+      background-color: var(--primary-blue);
+      color: white;
+      border: none;
+      border-radius: 10px;
+      font-size: 1.1rem;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .submit-button:hover {
+      background-color: var(--hover-blue);
+    }
+
+    .footer-text {
+      text-align: center;
+      margin-top: 40px;
+      color: var(--gray-text);
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="container">
+    <a href="Expense tracker.html" class="nav-back">← Back to Dashboard</a>
+
+    <section class="about-section">
+      <h2>Project Overview</h2>
+      <p>
+        The <strong>Daily Finance Tracker</strong> is a robust full-stack solution designed to empower users
+        with comprehensive control over their personal finances. By bridging the gap between raw data and
+        visual analytics, this application simplifies the complexity of income management and expense auditing.
+      </p>
+      <p>
+        Key features include real-time balance calculations, categorical data segregation,
+        and dynamic graphical reporting to ensure users make informed financial decisions.
+      </p>
+
+      <h3>Technical Architecture</h3>
+      <div class="tech-stack">
+        <span class="badge">Python (Flask)</span>
+        <span class="badge">SQLite Database</span>
+        <span class="badge">JavaScript (ES6+)</span>
+        <span class="badge">Chart.js Analytics</span>
+        <span class="badge">CSS3 Modern Layouts</span>
+      </div>
+    </section>
+
+    <section class="contact-form">
+      <h2>Get In Touch</h2>
+      <p style="color: var(--gray-text);">Have a question or looking for support? Send us a message below.</p>
+
+      <form id="feedback-form">
+        <div class="form-group">
+          <label>Full Name</label>
+          <input type="text" placeholder="Enter your name" required>
+        </div>
+
+        <div class="form-group">
+          <label>Email Address</label>
+          <input type="email" placeholder="email@example.com" required>
+        </div>
+
+        <div class="form-group">
+          <label>Message</label>
+          <textarea placeholder="How can we help you today?" required></textarea>
+        </div>
+
+        <button type="submit" class="submit-button">Submit Inquiry</button>
+      </form>
+    </section>
+
+    <div class="footer-text">
+      <p>© 2025 Financial Systems Inc. | Developed by Sara</p>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById('feedback-form').addEventListener('submit', function (e) {
+      e.preventDefault();
+      alert('Thank you for your message! Our team will contact you shortly.');
+      this.reset();
+    });
+  </script>
+</body>
+
+</html>

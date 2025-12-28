@@ -1,0 +1,142 @@
+:root {
+  --primary-blue: #3569a0;
+  --hover-blue: #264d77;
+  --bg-color: #F0F7FF;
+  --text-dark: #1A2B3C;
+  --white: #ffffff;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: var(--bg-color);
+  margin: 0;
+  padding: 20px;
+  color: var(--text-dark);
+}
+
+header {
+  max-width: 800px;
+  margin: 0 auto 30px auto;
+  text-align: center;
+  border: 3px solid #2e2e15;
+  /* Matching your header style */
+  border-radius: 20px;
+  padding: 15px;
+  background-color: var(--white);
+}
+
+.container {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.back-link:hover {
+  transform: translateX(-5px);
+}
+
+.form-container {
+  background: var(--white);
+  padding: 40px;
+  border-radius: 15px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 600;
+}
+
+label span {
+  color: #dc3545;
+}
+
+input,
+select,
+textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 16px;
+  box-sizing: border-box;
+  /* Ensures padding doesn't break width */
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  outline: none;
+  border-color: var(--primary-blue);
+  box-shadow: 0 0 5px rgba(53, 105, 160, 0.2);
+}
+
+/* Radio Group Styling */
+.radio-group {
+  display: flex;
+  gap: 30px;
+  padding: 10px 0;
+}
+
+.radio-option {
+  display: flex;
+  align-items: center;
+}
+
+.radio-option input[type="radio"] {
+  width: auto;
+  margin-right: 10px;
+  cursor: pointer;
+}
+
+.radio-option label {
+  margin-bottom: 0;
+  cursor: pointer;
+}
+
+textarea {
+  resize: vertical;
+  min-height: 80px;
+}
+
+.submit-button {
+  width: 100%;
+  padding: 15px;
+  background-color: var(--primary-blue);
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
+  margin-top: 10px;
+}
+
+.submit-button:hover {
+  background-color: var(--hover-blue);
+  transform: translateY(-2px);
+}
+
+.footer-text {
+  text-align: center;
+  margin-top: 40px;
+  color: var(--gray-text);
+  font-size: 0.9rem;
+}
+
+.nav-back {
+  display: inline-block;
+  margin-bottom: 20px;
+  padding: 10px 20px;
+  background-color: #3569a0;
+  color: white;
+  border-radius: 10px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: 0.3s;
+}
